@@ -1,14 +1,14 @@
 #!/bin/bash
 
-export DECLAIMER_PATH=/home/jinf/30.declaimer
-
-# Download source code from github
+DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
 mkdir -p $SOURCE_CODE_PATH; cd $SOURCE_CODE_PATH; rm -rf *
+
+# Download source code from github
 echo "Get or1k-src from openrisc-declaimer github ..."
 git clone https://github.com/openrisc-declaimer/or1k-src.git
 echo "Get or1k-linux from openrisc-declaimer github ..."
-git clone https://github.com/openrisc-declaimer/or1k-linux.git
+git clone git://github.com/openrisc-declaimer/or1k-linux.git
 echo "Get or1k-gcc from openrisc-declaimer github ..."
 git clone https://github.com/openrisc-declaimer/or1k-gcc.git
 echo "Get or1k-sim from openrisc-declaimer github ..."
