@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exportr DECLAIMER_PATH=/home/jinf/30.declaimer
+DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
 
 mkdir -p $SOURCE_CODE_PATH;
