@@ -1,18 +1,42 @@
 #!/bin/bash
 
-DECLAIMER_PATH=/home/jinf/30.declaimer
+exportr DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
-mkdir -p $SOURCE_CODE_PATH; cd $SOURCE_CODE_PATH; rm -rf *
+
+mkdir -p $SOURCE_CODE_PATH;
 
 # Download source code from github
 echo "Get or1k-src from openrisc-declaimer github ..."
-git clone https://github.com/openrisc-declaimer/or1k-src.git
-echo "Get or1k-linux from openrisc-declaimer github ..."
-git clone git://github.com/openrisc-declaimer/or1k-linux.git
+cd $SOURCE_CODE_PATH
+if [-d or1k-src]; then 
+	cd or1k-src; git pull
+else
+	git clone https://github.com/openrisc-declaimer/or1k-src.git
+fi
+
 echo "Get or1k-gcc from openrisc-declaimer github ..."
-git clone https://github.com/openrisc-declaimer/or1k-gcc.git
+cd $SOURCE_CODE_PATH
+if [-d or1k-gcc]; then 
+	cd or1k-gcc; git pull
+else
+	git clone https://github.com/openrisc-declaimer/or1k-gcc.git
+fi
+
 echo "Get or1k-sim from openrisc-declaimer github ..."
-git clone --branch or1k-master https://github.com/openrisc-declaimer/or1k-sim.git
+cd $SOURCE_CODE_PATH
+if [-d or1k-sim]; then 
+	cd or1k-sim; git pull
+else
+	git clone --branch or1k-master https://github.com/openrisc-declaimer/or1k-sim.git	
+fi
+
+echo "Get openOCD from openrisc-declaimer github ..."
+cd $SOURCE_CODE_PATH
+if [-d openOCD]; then 
+	cd openOCD; git pull
+else
+	git clone https://github.com/openrisc-declaimer/openOCD.git
+fi
 
 # setting env
 mkdir -p $DECLAIMER_PATH/toolchain
@@ -61,10 +85,3 @@ $SOURCE_CODE_PATH/or1k-sim/configure --target=or1k-elf \
                                      --prefix=$DECLAIMER_PATH/simulator
 make all; make install
 export PATH=$DECLAIMER_PATH/simulator/bin:$PATH
-
-# Build Linux
-cd $DECLAIMER_PATH/or1k-linux
-cd linux
-make ARCH=openrisc defconfig
-make ARCH=openrisc CROSS_COMPILE=or1k-elf- vmlinux
-
