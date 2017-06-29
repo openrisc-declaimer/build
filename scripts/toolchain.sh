@@ -3,9 +3,8 @@
 DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
 
-mkdir -p $SOURCE_CODE_PATH;
-
 # Download source code from github
+mkdir -p $SOURCE_CODE_PATH;
 echo "Get or1k-src from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
 if [ -d or1k-src ]; then 
