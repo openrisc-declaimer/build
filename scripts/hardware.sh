@@ -24,4 +24,4 @@ cd $DECLAIMER_PATH; mkdir -p build_sim; cd build_sim; rm -rf *
 $SOURCE_CODE_PATH/or1k-sim/configure --target=or1k-elf \
                                      --prefix=$DECLAIMER_PATH/simulator
 make all; make install
-export PATH=$DECLAIMER_PATH/simulator/bin:$PATH
+

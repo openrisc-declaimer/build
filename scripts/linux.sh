@@ -14,7 +14,6 @@ fi
 
 # setting env
 export PATH=$PATH:$DECLAIMER_PATH/toolchain/bin
-export PATH=$DECLAIMER_PATH/simulator/bin:$PATH
 
 # Build Linux
 mkdir -p $DECLAIMER_PATH/kernel; cd $DECLAIMER_PATH/kernel; rm -rf *

@@ -14,6 +14,5 @@ export OR1k_LINUX=$OR1k_KERNEL/or1k-linux
 export OR1k_UBOOT=$OR1k_BLDR/or1k-uboot
 export OR1k_PROCESS=$OR1K_HDW/or1k-skyone
 
-
 export PATH=$PATH:$DECLAIMER_PATH/toolchain/bin
-export PATH=$DECLAIMER_PATH/simulator/bin:$PATH
+
