@@ -18,7 +18,7 @@ export PATH=$DECLAIMER_PATH/simulator/bin:$PATH
 
 # Build Linux
 mkdir -p $DECLAIMER_PATH/kernel; cd $DECLAIMER_PATH/kernel; rm -rf *
-cp $DECLAIMER_PATH/or1k-linux . -rf
+cp $SOURCE_CODE_PATH/or1k-linux . -rf
 cd or1k-linux
 make ARCH=openrisc defconfig
 make ARCH=openrisc CROSS_COMPILE=or1k-elf- vmlinux
