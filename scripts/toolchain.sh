@@ -8,7 +8,7 @@ mkdir -p $SOURCE_CODE_PATH;
 # Download source code from github
 echo "Get or1k-src from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
-if [-d or1k-src]; then 
+if [ -d or1k-src ]; then 
 	cd or1k-src; git pull
 else
 	git clone https://github.com/openrisc-declaimer/or1k-src.git
@@ -16,7 +16,7 @@ fi
 
 echo "Get or1k-gcc from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
-if [-d or1k-gcc]; then 
+if [ -d or1k-gcc ]; then 
 	cd or1k-gcc; git pull
 else
 	git clone https://github.com/openrisc-declaimer/or1k-gcc.git
@@ -24,7 +24,7 @@ fi
 
 echo "Get or1k-sim from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
-if [-d or1k-sim]; then 
+if [ -d or1k-sim ]; then 
 	cd or1k-sim; git pull
 else
 	git clone --branch or1k-master https://github.com/openrisc-declaimer/or1k-sim.git	
@@ -32,7 +32,7 @@ fi
 
 echo "Get openOCD from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
-if [-d openOCD]; then 
+if [ -d openOCD ]; then 
 	cd openOCD; git pull
 else
 	git clone https://github.com/openrisc-declaimer/openOCD.git

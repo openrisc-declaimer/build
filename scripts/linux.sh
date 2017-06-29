@@ -5,7 +5,7 @@ SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
 
 echo "Get or1k-linux from openrisc-declaimer github ..."
 cd $SOURCE_CODE_PATH
-if [-d or1k-linux]; then 
+if [ -d or1k-linux ]; then 
 	cd or1k-linux; git pull
 else
 	git clone https://github.com/openrisc-declaimer/or1k-linux.git
