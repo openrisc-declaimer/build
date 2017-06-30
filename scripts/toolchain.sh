@@ -2,6 +2,7 @@
 
 DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
+TOOLS_PATH=$DECLAIMER_PATH/tools
 
 # Download source code from github
 mkdir -p $SOURCE_CODE_PATH;
@@ -38,13 +39,14 @@ else
 fi
 
 # setting env
-mkdir -p $DECLAIMER_PATH/toolchain
-export PATH=$PATH:$DECLAIMER_PATH/toolchain/bin
+mkdir -p $TOOLS_PATH/or1kgcc-5.3.0
+mkdir -p $TOOLS_PATH/simulator
+export PATH=$PATH:$TOOLS_PATH/or1kgcc-5.3.0/bin
 
 # Build the auxiliary tools
 cd $DECLAIMER_PATH; mkdir -p build_src; cd build_src; rm -rf *
 $SOURCE_CODE_PATH/or1k-src/configure --target=or1k-elf \
-                                     --prefix=$DECLAIMER_PATH/toolchain --enable-shared \
+                                     --prefix=$TOOLS_PATH/or1kgcc-5.3.0 --enable-shared \
                                      --disable-itcl --disable-tk --disable-tcl \
                                      --disable-winsup --disable-gdbtk \
                                      --disable-libgui --disable-rda --disable-sid \
@@ -56,14 +58,14 @@ make; make install
 # Build the bootstrap compiler
 cd $DECLAIMER_PATH; mkdir -p build_gcc; cd build_gcc; rm -rf *
 $SOURCE_CODE_PATH/or1k-gcc/configure --target=or1k-elf \
-                                     --prefix=$DECLAIMER_PATH/toolchain --enable-languages=c \
+                                     --prefix=$TOOLS_PATH/or1kgcc-5.3.0 --enable-languages=c \
                                      --disable-shared --disable-libssp
 make; make install
 
 # Build newlib and gdb
 cd $DECLAIMER_PATH; mkdir -p build_src; cd build_src; rm -rf *
 $SOURCE_CODE_PATH/or1k-src/configure --target=or1k-elf \
-                                     --prefix=$DECLAIMER_PATH/toolchain --enable-shared \
+                                     --prefix=$TOOLS_PATH/or1kgcc-5.3.0 --enable-shared \
                                      --disable-itcl --disable-tk --disable-tcl \
                                      --disable-winsup --disable-gdbtk --disable-libgui \
                                      --disable-rda --disable-sid --enable-sim \
@@ -74,12 +76,12 @@ make; make install
 # Build full GCC
 cd $DECLAIMER_PATH; mkdir -p build_gcc; cd build_gcc; rm -rf *
 $SOURCE_CODE_PATH/or1k-gcc/configure --target=or1k-elf \
-                                     --prefix=$DECLAIMER_PATH/toolchain \
+                                     --prefix=$TOOLS_PATH/or1kgcc-5.3.0 \
 					                 --enable-languages=c,c++ --disable-shared --disable-libssp --with-newlib
 make; make install
 
 # Build simulator
 cd $DECLAIMER_PATH; mkdir -p build_sim; cd build_sim; rm -rf *
 $SOURCE_CODE_PATH/or1k-sim/configure --target=or1k-elf \
-                                     --prefix=$DECLAIMER_PATH/toolchain
+                                     --prefix=$TOOLS_PATH/simulator
 make all; make install

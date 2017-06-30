@@ -2,6 +2,7 @@
 
 DECLAIMER_PATH=/home/jinf/30.declaimer
 SOURCE_CODE_PATH=$DECLAIMER_PATH/sourcecode
+TOOLS_PATH=$DECLAIMER_PATH/tools
 
 # Download source code from github
 echo "Get or1k-linux from openrisc-declaimer github ..."
@@ -13,7 +14,8 @@ else
 fi
 
 # setting env
-export PATH=$PATH:$DECLAIMER_PATH/toolchain/bin
+export PATH=$PATH:$TOOLS_PATH/or1kgcc-5.3.0/bin
+export PATH=$PATH:$TOOLS_PATH/simulator/bin
 
 # Build Linux
 mkdir -p $DECLAIMER_PATH/kernel; cd $DECLAIMER_PATH/kernel; rm -rf *
