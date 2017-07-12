@@ -27,7 +27,7 @@ cd $SOURCE_CODE_PATH
 if [ -d or1k-sim ]; then 
 	cd or1k-sim; git pull
 else
-	git clone --branch or1k-master https://github.com/openrisc-declaimer/or1k-sim.git	
+	git clone --branch or1k-master https://github.com/openrisc-declaimer/or1k-sim.git
 fi
 
 echo "Get openOCD from openrisc-declaimer github ..."
